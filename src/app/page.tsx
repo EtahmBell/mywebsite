@@ -1,37 +1,52 @@
-const essentials = [
-  { icon: "🐾", title: "Make time for play", text: "A favorite toy, a little fresh air, and your undivided attention. The best moments are often the simplest." },
-  { icon: "🌳", title: "Take the scenic route", text: "Turn your everyday walk into a small adventure. Leave a little extra time for all the interesting smells." },
-  { icon: "🏡", title: "Feel right at home", text: "A cozy corner and a familiar routine make a happy place for your four-legged family member." },
-];
-
 export default function Home() {
   return (
-    <div className="site">
-      <header className="header">
-        <a className="brand" href="#" aria-label="Website4Dog home"><span aria-hidden="true">🐾</span> website4dog<span className="brand-dot">.</span></a>
-        <a className="nav-link" href="#essentials">The everyday essentials <span aria-hidden="true">↗</span></a>
-      </header>
-      <main>
-        <section className="hero" aria-labelledby="hero-title">
-          <div className="hero-copy">
-            <p className="eyebrow">FOR DOGS. AND THEIR PEOPLE.</p>
-            <h1 id="hero-title">Life is better<br />with a <em>dog.</em></h1>
-            <p className="intro">More muddy paws. More everyday adventures. More unconditional love. A little space to celebrate life with your best friend.</p>
-            <a className="button" href="#essentials">Explore the essentials <span aria-hidden="true">↓</span></a>
-          </div>
-          <div className="dog-card" aria-label="Illustration of a happy dog">
-            <span className="card-caption">GOOD COMPANY, EVERY DAY</span>
-            <div className="dog" aria-hidden="true">🐶</div>
-            <div className="dog-note"><span className="status-dot" /> Always happy to see you.</div>
-            <span className="sparkle" aria-hidden="true">✦</span>
-          </div>
-        </section>
-        <section className="essentials" id="essentials" aria-labelledby="essentials-title">
-          <div className="section-heading"><p className="eyebrow">THE GOOD STUFF</p><h2 id="essentials-title">Small things. Happy tails.</h2><p>A good day together starts with the basics.</p></div>
-          <div className="grid">{essentials.map((item, index) => <article className="essential" key={item.title}><div className="card-top"><span className="icon" aria-hidden="true">{item.icon}</span><span className="number">0{index + 1}</span></div><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
-        </section>
-      </main>
-      <footer><a className="brand" href="#">website4dog<span className="brand-dot">.</span></a><p>Made for a life full of wagging tails.</p><a href="#">Back to top ↑</a></footer>
-    </div>
+    <>
+
+  <a className="skip-link" href="#main">Skip to content</a>
+  <div className="page">
+    <header className="header">
+      <a className="wordmark" href="#" aria-label="Ethan Bell, home">Ethan Bell</a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a><a href="#work">Work</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+      </nav>
+    </header>
+    <main id="main">
+      <section className="hero" id="about" aria-labelledby="intro-title">
+        <div className="intro">
+          <p className="eyebrow">Digital health software engineer & entrepreneur</p>
+          <h1 id="intro-title">Technology<br />with a human purpose.</h1>
+          <p className="lead">I build software at the intersection of technology and healthcare, with a focus on more accessible, human-centered care.</p>
+          <div className="actions"><a className="text-link" href="#experience">Explore my experience <span aria-hidden="true">↗</span></a><a className="text-link" href="#contact">Get in touch <span aria-hidden="true">↗</span></a></div>
+        </div>
+        <figure className="portrait">
+          <svg viewBox="823 90 488 365" role="img" aria-labelledby="portrait-title"><title id="portrait-title">Illustrative black and white portrait, to be replaced with your photo</title><image href="/editorial-reference.png" width="1374" height="1145"/></svg>
+          <figcaption>Portrait placeholder · Your photo goes here</figcaption>
+        </figure>
+      </section>
+      <section className="expertise section" id="experience" aria-labelledby="experience-title">
+        <div className="section-heading"><h2 className="eyebrow" id="experience-title">Areas of focus</h2><span className="section-number" aria-hidden="true">01 /</span></div>
+        <div className="expertise-grid">
+          <article><h3>Engineering</h3><p>Thoughtful software that puts people first. An interest in clarity, reliability, and solving the right problem.</p></article>
+          <article><h3>Entrepreneurship</h3><p>Exploring ideas at the intersection of technology and care, from understanding a need to shaping a useful product.</p></article>
+          <article><h3>Digital health</h3><p>Making healthcare easier to navigate, with technology that supports more accessible, human-centered experiences.</p></article>
+        </div>
+        <details className="resume"><summary>Experience & résumé <span aria-hidden="true">+</span></summary><div className="resume-content"><p>This section is ready for your roles, organizations, and the work you’re proud of.</p><p className="small">Résumé details will be added here. No employment history has been included yet.</p></div></details>
+      </section>
+      <section className="section work" id="work" aria-labelledby="work-title">
+        <div className="section-heading"><h2 className="eyebrow" id="work-title">Selected work</h2><span className="section-number" aria-hidden="true">02 /</span></div>
+        <article className="project">
+          <div className="project-visual"><svg viewBox="60 833 694 283" role="img" aria-labelledby="project-image-title"><title id="project-image-title">Illustrative care navigation product interface</title><image href="/editorial-reference.png" width="1374" height="1145"/></svg></div>
+          <div className="project-copy"><p className="eyebrow">Concept project</p><h3>Care navigation</h3><p>A product concept for helping people find and access care, with clear guidance, personalized options, and ongoing support.</p><details className="project-details"><summary className="text-link">Explore the concept <span aria-hidden="true">+</span></summary><div><p>The question: how could a digital experience make someone’s next step in healthcare easier to understand?</p><p>This illustrative project explores a simple place to find care, understand options, and keep track of next steps.</p><p className="small">Sample project for this design preview. Replace with your own work and outcomes.</p></div></details></div>
+        </article>
+      </section>
+      <section className="section contact" id="contact" aria-labelledby="contact-title">
+        <div><p className="eyebrow">Let’s connect</p><h2 id="contact-title">Good things start<br />with a conversation.</h2></div>
+        <div className="contact-copy"><p>Interested in thoughtful technology and better experiences in health? There’s plenty to talk about.</p><p className="contact-placeholder">Your email and social links will go here.</p></div>
+      </section>
+    </main>
+    <footer><span>Ethan Bell <span className="footer-dot" aria-hidden="true">·</span> Software & digital health</span><a href="#">Back to top ↑</a></footer>
+  </div>
+
+    </>
   );
 }
