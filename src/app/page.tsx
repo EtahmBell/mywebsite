@@ -1,47 +1,184 @@
+import SiteHeader from "./site-header";
+import { awards, experience, projects, research, type Entry, type Link } from "./content";
+
+function context(entry: Entry) {
+  return entry.role ? `${entry.context} · ${entry.role}` : entry.context;
+}
+
+function Links({ links }: { links?: Link[] }) {
+  if (!links) return null;
+  return (
+    <div className="entry-links">
+      {links.map(({ label, href }) => {
+        const external = href.startsWith("http");
+        return (
+          <a className="text-link" href={href} key={href} {...(external && { target: "_blank", rel: "noreferrer" })}>
+            {label} <span aria-hidden="true">{external ? "↗" : "↑"}</span>
+          </a>
+        );
+      })}
+    </div>
+  );
+}
+
+function Points({ points }: { points?: string[] }) {
+  if (!points) return null;
+  return <ul className="entry-points">{points.map((point) => <li key={point}>{point}</li>)}</ul>;
+}
+
+function Tags({ tags }: { tags?: string[] }) {
+  return tags ? <p className="entry-tags">{tags.join(" · ")}</p> : null;
+}
+
+function ProjectCard({ entry }: { entry: Entry }) {
+  if (entry.featured) {
+    return (
+      <article className="card card-featured" id={entry.id}>
+        <div className="featured-main">
+          <p className="card-context">{context(entry)}</p>
+          <h3>{entry.title}</h3>
+          <p className="card-summary">{entry.summary}</p>
+          <Points points={entry.points} />
+          <Tags tags={entry.tags} />
+          <Links links={entry.links} />
+        </div>
+        {entry.image && (
+          <figure className="featured-visual">
+            <img src={entry.image.src} alt={entry.image.alt} width={entry.image.width} height={entry.image.height} />
+          </figure>
+        )}
+      </article>
+    );
+  }
+  return (
+    <article className="card" id={entry.id}>
+      {entry.image && (
+        <figure className="card-visual">
+          <img src={entry.image.src} alt={entry.image.alt} width={entry.image.width} height={entry.image.height} loading="lazy" />
+        </figure>
+      )}
+      <div className="card-body">
+        <p className="card-context">{context(entry)}</p>
+        <h3>{entry.title}</h3>
+        <p className="card-summary">{entry.summary}</p>
+        <Tags tags={entry.tags} />
+        {entry.points && (
+          <details className="card-details">
+            <summary>What I did <span aria-hidden="true">+</span></summary>
+            <Points points={entry.points} />
+          </details>
+        )}
+        <Links links={entry.links} />
+      </div>
+    </article>
+  );
+}
+
+function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
+  return (
+    <section className="section" id={id} aria-labelledby={`${id}-title`}>
+      <h2 className="section-title" id={`${id}-title`}>{title}</h2>
+      {children}
+    </section>
+  );
+}
+
+function RowList({ entries }: { entries: Entry[] }) {
+  return (
+    <div className="rows">
+      {entries.map((entry) => (
+        <article className="row" id={entry.id} key={entry.title}>
+          <div className="row-head">
+            <h3>{entry.title}</h3>
+            {entry.role && <p className="row-role">{entry.role}</p>}
+            <p className="row-meta">{entry.context}</p>
+          </div>
+          <div className="row-body">
+            {entry.heading && <h4 className="row-heading">{entry.heading}</h4>}
+            <p className="entry-summary">{entry.summary}</p>
+            <Points points={entry.points} />
+            <div className="row-foot">
+              <Tags tags={entry.tags} />
+              <Links links={entry.links} />
+            </div>
+            {entry.image && (
+              <figure className="row-visual">
+                <img src={entry.image.src} alt={entry.image.alt} width={entry.image.width} height={entry.image.height} loading="lazy" />
+              </figure>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function PublicationList({ entries }: { entries: Entry[] }) {
+  return (
+    <div className="rows">
+      {entries.map((entry) => {
+        const paper = entry.links?.[0];
+        return (
+          <article className="row pub" id={entry.id} key={entry.title}>
+            <div className="pub-meta">
+              <p className="pub-year">{entry.year}</p>
+              <p className="pub-venue">{entry.context}</p>
+              {entry.role && <p className="row-role">{entry.role}</p>}
+              {entry.image && (
+                <figure className="pub-visual">
+                  <img src={entry.image.src} alt={entry.image.alt} width={entry.image.width} height={entry.image.height} loading="lazy" />
+                </figure>
+              )}
+            </div>
+            <div className="row-body">
+              <h3 className="pub-title">
+                {paper ? <a href={paper.href} target="_blank" rel="noreferrer">{entry.title}</a> : entry.title}
+              </h3>
+              <p className="entry-summary">{entry.summary}</p>
+              <Points points={entry.points} />
+              <Links links={entry.links} />
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <>
 
   <a className="skip-link" href="#main">Skip to content</a>
   <div className="page">
-    <header className="header">
-      <a className="wordmark" href="#" aria-label="Ethan Bell, home">Ethan Bell</a>
-      <nav aria-label="Main navigation">
-        <a href="#about">About</a><a href="#work">Work</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
-      </nav>
-    </header>
+    <SiteHeader />
     <main id="main">
       <section className="hero" id="about" aria-labelledby="intro-title">
         <div className="intro">
-          <p className="eyebrow">Digital health software engineer & entrepreneur</p>
-          <h1 id="intro-title">Technology<br />with a human purpose.</h1>
-          <p className="lead">I build software at the intersection of technology and healthcare, with a focus on more accessible, human-centered care.</p>
-          <div className="actions"><a className="text-link" href="#experience">Explore my experience <span aria-hidden="true">↗</span></a><a className="text-link" href="#contact">Get in touch <span aria-hidden="true">↗</span></a></div>
+          <p className="eyebrow">Software Engineer · Founder</p>
+          <h1 id="intro-title"><span className="line">Healthcare should <span className="nowrap">be easier.</span></span> <span className="line">I’m working on it.</span></h1>
+          <p className="proof">Currently building at <strong>Lamina</strong> and <strong>OpenTSLM</strong> · Previously at <strong>ESO Fund</strong></p>
+          <a className="text-link hero-link" href="#projects">See my work <span aria-hidden="true">↓</span></a>
         </div>
         <figure className="portrait">
-          <svg viewBox="823 90 488 365" role="img" aria-labelledby="portrait-title"><title id="portrait-title">Illustrative black and white portrait, to be replaced with your photo</title><image href="/editorial-reference.png" width="1374" height="1145"/></svg>
-          <figcaption>Portrait placeholder · Your photo goes here</figcaption>
+          <img src="/portrait-web.jpg" alt="Ethan Bell" width="1800" height="1200" />
         </figure>
       </section>
-      <section className="expertise section" id="experience" aria-labelledby="experience-title">
-        <div className="section-heading"><h2 className="eyebrow" id="experience-title">Areas of focus</h2><span className="section-number" aria-hidden="true">01 /</span></div>
-        <div className="expertise-grid">
-          <article><h3>Engineering</h3><p>Thoughtful software that puts people first. An interest in clarity, reliability, and solving the right problem.</p></article>
-          <article><h3>Entrepreneurship</h3><p>Exploring ideas at the intersection of technology and care, from understanding a need to shaping a useful product.</p></article>
-          <article><h3>Digital health</h3><p>Making healthcare easier to navigate, with technology that supports more accessible, human-centered experiences.</p></article>
+      <Section id="projects" title="Projects">
+        <div className="project-grid">
+          {projects.map((entry) => <ProjectCard entry={entry} key={entry.title} />)}
         </div>
-        <details className="resume"><summary>Experience & résumé <span aria-hidden="true">+</span></summary><div className="resume-content"><p>This section is ready for your roles, organizations, and the work you’re proud of.</p><p className="small">Résumé details will be added here. No employment history has been included yet.</p></div></details>
-      </section>
-      <section className="section work" id="work" aria-labelledby="work-title">
-        <div className="section-heading"><h2 className="eyebrow" id="work-title">Selected work</h2><span className="section-number" aria-hidden="true">02 /</span></div>
-        <article className="project">
-          <div className="project-visual"><svg viewBox="60 833 694 283" role="img" aria-labelledby="project-image-title"><title id="project-image-title">Illustrative care navigation product interface</title><image href="/editorial-reference.png" width="1374" height="1145"/></svg></div>
-          <div className="project-copy"><p className="eyebrow">Concept project</p><h3>Care navigation</h3><p>A product concept for helping people find and access care, with clear guidance, personalized options, and ongoing support.</p><details className="project-details"><summary className="text-link">Explore the concept <span aria-hidden="true">+</span></summary><div><p>The question: how could a digital experience make someone’s next step in healthcare easier to understand?</p><p>This illustrative project explores a simple place to find care, understand options, and keep track of next steps.</p><p className="small">Sample project for this design preview. Replace with your own work and outcomes.</p></div></details></div>
-        </article>
-      </section>
+      </Section>
+      <Section id="experience" title="Experience"><RowList entries={experience} /></Section>
+      <Section id="research" title="Research"><PublicationList entries={research} /></Section>
+      <Section id="awards" title="Awards"><RowList entries={awards} /></Section>
       <section className="section contact" id="contact" aria-labelledby="contact-title">
-        <div><p className="eyebrow">Let’s connect</p><h2 id="contact-title">Good things start<br />with a conversation.</h2></div>
-        <div className="contact-copy"><p>Interested in thoughtful technology and better experiences in health? There’s plenty to talk about.</p><p className="contact-placeholder">Your email and social links will go here.</p></div>
+        <h2 className="section-title" id="contact-title">Contact</h2>
+        <div className="contact-links" aria-label="Contact links">
+          <a className="text-link" href="mailto:etahm@stanford.edu">etahm@stanford.edu <span aria-hidden="true">↗</span></a>
+          <a className="text-link" href="https://www.linkedin.com/in/ethan-bell-434a47260/">LinkedIn <span aria-hidden="true">↗</span></a>
+          <a className="text-link" href="https://github.com/EtahmBell">GitHub <span aria-hidden="true">↗</span></a>
+        </div>
       </section>
     </main>
     <footer><span>Ethan Bell <span className="footer-dot" aria-hidden="true">·</span> Software & digital health</span><a href="#">Back to top ↑</a></footer>
