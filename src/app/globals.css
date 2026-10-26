@@ -1,8 +1,8 @@
 @font-face{font-family:Editorial;src:local("Baskerville");font-display:swap}
 :root{--paper:#f2f0eb;--ink:#1d2320;--muted:#5f625d;--accent:#2f6b62;--rule:#d9d6cf;--serif:Editorial,"Baskerville","Times New Roman",serif}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:32px}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.65}a{color:inherit;text-decoration:none}a:hover{color:var(--accent)}a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:7px}::selection{background:#dce8df}.page{width:min(1320px,calc(100% - 112px));margin:auto}.header{display:flex;align-items:center;justify-content:space-between;padding:33px 0 38px}.wordmark{text-transform:uppercase;font-size:18px;letter-spacing:.24em;font-weight:500}.header nav{display:flex;gap:34px;font-size:.95rem}.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,min(500px,36vw));gap:clamp(2rem,5vw,4.5rem);align-items:center;padding:clamp(4rem,10vh,8rem) 0 36px}.eyebrow{font-size:10px;letter-spacing:.25em;text-transform:uppercase;line-height:1.8;font-weight:500;margin:0 0 23px}.intro .eyebrow{max-width:550px;font-size:.75rem;letter-spacing:.2em;color:var(--accent);margin-bottom:1.25rem}h1,h2,h3,p,figure{margin-top:0}h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.75rem,5.5vw,5.5rem);letter-spacing:-.02em;line-height:1.02;text-wrap:balance;margin-bottom:24px;max-width:760px}h1 .line{display:block}.proof{font-size:.9rem;color:#6b6b66;margin:1rem 0 0}.text-link{display:inline-flex;align-items:center;gap:18px;width:fit-content;color:var(--accent);font-size:15px;border-bottom:1px solid #7b9c91;padding:0 0 4px;cursor:pointer}.text-link:hover{border-color:var(--accent)}.text-link span{font-size:20px;line-height:1}.portrait{margin:0;width:100%;max-width:500px;justify-self:end}.portrait img{width:100%;height:auto;display:block;aspect-ratio:1432/1472;object-fit:cover;object-position:50% 20%;filter:brightness(1.08) contrast(.92) sepia(.08);border-radius:2px}.portrait figcaption{font-size:9px;letter-spacing:.2em;text-transform:uppercase;margin-top:9px;color:var(--muted)}.section{border-top:1px solid var(--rule);padding:22px 0 26px}.small{font-size:12px!important;color:var(--muted)}.contact{display:grid;grid-template-columns:1.2fr .9fr;gap:44px;padding-top:35px;padding-bottom:42px}.contact .eyebrow{color:var(--accent);margin-bottom:15px}.contact h2{font-family:var(--serif);font-size:clamp(36px,4vw,54px);font-weight:400;line-height:1.1;letter-spacing:-.04em;margin:0}.contact-copy{align-self:center;color:var(--muted);max-width:400px}.contact-placeholder{font-size:13px;color:var(--accent)}footer{border-top:1px solid var(--rule);padding:20px 0 28px;display:flex;justify-content:space-between;gap:20px;font-size:11px;color:var(--muted)}.footer-dot{margin:0 9px}.skip-link{position:fixed;top:8px;left:8px;transform:translateY(-180%);padding:10px;background:var(--paper);z-index:5}.skip-link:focus{transform:none}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:32px}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.65}a{color:inherit;text-decoration:none}a:hover{color:var(--accent)}a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:7px}::selection{background:#dce8df}.page{width:min(1320px,calc(100% - 112px));margin:auto}.header{display:flex;align-items:center;justify-content:space-between;padding:33px 0 38px}.wordmark{text-transform:uppercase;font-size:18px;letter-spacing:.24em;font-weight:500}.header nav{display:flex;gap:34px;font-size:.95rem}.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,min(420px,32vw));gap:clamp(2rem,5vw,4.5rem);align-items:center;padding:clamp(4rem,10vh,8rem) 0 36px}.eyebrow{font-size:10px;letter-spacing:.25em;text-transform:uppercase;line-height:1.8;font-weight:500;margin:0 0 23px}.intro .eyebrow{max-width:550px;font-size:.75rem;letter-spacing:.2em;color:var(--accent);margin-bottom:1.25rem}h1,h2,h3,p,figure{margin-top:0}h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.75rem,5.5vw,5.5rem);letter-spacing:-.02em;line-height:1.02;text-wrap:balance;margin-bottom:24px;max-width:760px}h1 .line{display:block}.proof{font-size:.9rem;color:#6b6b66;margin:1rem 0 0}.text-link{display:inline-flex;align-items:center;gap:18px;width:fit-content;color:var(--accent);font-size:15px;border-bottom:1px solid #7b9c91;padding:0 0 4px;cursor:pointer}.text-link:hover{border-color:var(--accent)}.text-link span{font-size:20px;line-height:1}.portrait{margin:0;width:100%;max-width:420px;justify-self:end}.portrait img{width:100%;height:auto;display:block;filter:brightness(1.08) contrast(.92) sepia(.08);border-radius:2px}.portrait figcaption{font-size:9px;letter-spacing:.2em;text-transform:uppercase;margin-top:9px;color:var(--muted)}.section{border-top:1px solid var(--rule);padding:22px 0 26px}.small{font-size:12px!important;color:var(--muted)}.contact{display:grid;grid-template-columns:1.2fr .9fr;gap:44px;padding-top:35px;padding-bottom:42px}.contact .eyebrow{color:var(--accent);margin-bottom:15px}.contact h2{font-family:var(--serif);font-size:clamp(36px,4vw,54px);font-weight:400;line-height:1.1;letter-spacing:-.04em;margin:0}.contact-copy{align-self:center;color:var(--muted);max-width:400px}.contact-placeholder{font-size:13px;color:var(--accent)}footer{border-top:1px solid var(--rule);padding:20px 0 28px;display:flex;justify-content:space-between;gap:20px;font-size:11px;color:var(--muted)}.footer-dot{margin:0 9px}.skip-link{position:fixed;top:8px;left:8px;transform:translateY(-180%);padding:10px;background:var(--paper);z-index:5}.skip-link:focus{transform:none}
 @media(max-width:1000px){.page{width:calc(100% - 64px)}.hero{grid-template-columns:minmax(0,1fr) minmax(0,340px)}.eyebrow{font-size:9px}}
-@media(max-width:700px){.page{width:calc(100% - 40px)}.header{align-items:flex-start;padding:24px 0 20px;gap:24px}.wordmark{font-size:14px;letter-spacing:.18em;white-space:nowrap}.header nav{gap:12px 18px;justify-content:flex-end;flex-wrap:wrap;font-size:12px;max-width:230px}.hero{grid-template-columns:1fr;padding-top:2.5rem;gap:32px;padding-bottom:30px}h1{max-width:570px}.intro .eyebrow{max-width:300px;margin-bottom:20px}.text-link{font-size:14px}.portrait{max-width:420px;width:100%;justify-self:start}.contact{padding-top:28px}.contact h2{font-size:43px}.contact-copy{max-width:500px}footer{font-size:10px}.section{padding-top:20px}}
+@media(max-width:700px){.page{width:calc(100% - 40px)}.header{align-items:flex-start;padding:24px 0 20px;gap:24px}.wordmark{font-size:14px;letter-spacing:.18em;white-space:nowrap}.header nav{gap:12px 18px;justify-content:flex-end;flex-wrap:wrap;font-size:12px;max-width:230px}.hero{grid-template-columns:1fr;padding-top:2.5rem;gap:32px;padding-bottom:30px}h1{max-width:570px}.intro .eyebrow{max-width:300px;margin-bottom:20px}.text-link{font-size:14px}.portrait{max-width:340px;width:100%;justify-self:start}.contact{padding-top:28px}.contact h2{font-size:43px}.contact-copy{max-width:500px}footer{font-size:10px}.section{padding-top:20px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 /* Fine, even paper noise over everything, so pinned bars and the page share one surface. */
@@ -81,7 +81,7 @@ h1 .line{text-wrap:wrap}.nowrap{white-space:nowrap}
 .card{display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:3px;overflow:hidden;background:rgba(255,255,255,.35);scroll-margin-top:calc(var(--header-h,70px) + 80px)}
 .card h3{font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.2vw,30px);line-height:1.15;letter-spacing:-.02em;margin-bottom:10px}
 .card-visual{margin:0;aspect-ratio:16/10;background:#e6ece4;border-bottom:1px solid var(--rule)}
-.card-visual img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.card-visual img{display:block;width:100%;height:100%;object-fit:cover;object-position:left top}
 .card-body{display:flex;flex-direction:column;flex:1;padding:clamp(1.25rem,2vw,1.75rem)}
 .card-details{margin-bottom:16px}
 .card-details summary{display:inline-flex;align-items:center;gap:8px;cursor:pointer;list-style:none;font-size:14px;color:var(--ink)}
@@ -89,12 +89,7 @@ h1 .line{text-wrap:wrap}.nowrap{white-space:nowrap}
 .card-details summary span{color:var(--accent);transition:transform 180ms ease}
 .card-details[open] summary span{transform:rotate(45deg)}
 .card-details .entry-points{margin:12px 0 0}
-.card-featured{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);align-items:center;gap:clamp(1.5rem,4vw,4rem);padding:clamp(1.5rem,3.5vw,3rem);background:#e6ece4;border-color:#d3dccf}
-.card-featured h3{font-size:clamp(32px,3.4vw,46px);margin-bottom:14px}
-.card-featured .card-summary{font-size:17px;color:var(--ink);max-width:46ch}
-.featured-main{display:flex;flex-direction:column}
-.featured-visual{margin:0;border:1px solid #d3dccf;border-radius:6px;overflow:hidden;box-shadow:0 18px 40px -24px rgba(29,35,32,.35)}
-.featured-visual img{display:block;width:100%;height:auto}
+.card-visual-placeholder{display:flex;align-items:center;justify-content:center;height:100%;font-family:var(--serif);font-size:clamp(24px,2.4vw,32px);letter-spacing:-.02em;color:var(--accent)}
 
 /* Experience, research, awards: title on the left, details on the right. */
 .rows{display:grid}
@@ -121,10 +116,6 @@ h1 .line{text-wrap:wrap}.nowrap{white-space:nowrap}
 .pub-title a:hover{background-size:100% 1px}
 @media(prefers-reduced-motion:reduce){.pub-title a{transition:none}}
 
-@media(max-width:1100px){
-  .card-featured{grid-template-columns:1fr}
-  .featured-visual{order:-1}
-}
 @media(max-width:800px){
   .project-grid,.row{grid-template-columns:1fr}
   .row{gap:12px}
@@ -134,3 +125,17 @@ h1 .line{text-wrap:wrap}.nowrap{white-space:nowrap}
 /* Section titles: serif headings, pinned below the nav while their section scrolls. */
 .section-title{position:sticky;top:calc(var(--header-h,70px) - 1px);z-index:3;background:var(--paper);margin:0;padding:12px 0 14px;font-family:var(--serif);font-weight:400;font-size:clamp(2rem,3.2vw,2.75rem);line-height:1.1;letter-spacing:-.02em}
 .contact .section-title{position:static;padding-bottom:18px}
+
+/* Hero introduction: name, studies, current work and a short about. */
+.hero-lede{font-family:var(--serif);font-size:clamp(1.25rem,1.9vw,1.6rem);line-height:1.35;letter-spacing:-.01em;max-width:30ch;margin-bottom:0}
+.intro .proof{max-width:58ch}
+.about-text{color:var(--muted);max-width:52ch;margin:1.5rem 0 .75rem}
+.about-more{margin:0}
+.about-more .entry-points{font-size:15px}
+
+/* Education: degrees stacked on the right, status in the accent label style. */
+.degrees{display:grid;gap:20px}
+.degree h4{font-family:var(--serif);font-weight:400;font-size:clamp(19px,1.6vw,22px);line-height:1.3;letter-spacing:-.01em;margin:0 0 4px}
+.degree-focus{font-size:15px;color:var(--muted);margin:0 0 4px}
+.degree .row-heading{margin:0}
+.pub-kind{margin-bottom:6px}
