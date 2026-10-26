@@ -145,6 +145,7 @@ export default function Home() {
         <main id="main">
           <section className="hero" id="about" aria-labelledby="intro-title">
             <Contour variant="hero" />
+            <Contour variant="hero-isle" />
             <div className="intro">
               <p className="eyebrow">Health · AI · Software</p>
               <h1 id="intro-title">Ethan Bell.</h1>
@@ -173,11 +174,12 @@ export default function Home() {
             </div>
           </section>
           <Section id="projects" title="Projects">
+            <Contour variant="projects" />
             <div className="project-grid">
               {projects.map((entry) => <ProjectCard entry={entry} key={entry.title} />)}
             </div>
           </Section>
-          <Section id="experience" title="Experience"><RowList entries={experience} /></Section>
+          <Section id="experience" title="Experience"><Contour variant="experience" /><RowList entries={experience} /></Section>
           <Section id="education" title="Education">
             <div className="rows">
               <article className="row">
@@ -195,7 +197,7 @@ export default function Home() {
             </div>
           </Section>
           <Section id="research" title="Research"><Contour variant="research" /><PublicationList entries={research} /></Section>
-          <Section id="awards" title="Awards"><RowList entries={awards} /></Section>
+          <Section id="awards" title="Awards"><Contour variant="awards" /><RowList entries={awards} /></Section>
           {photos.length > 0 ? (
             <Section id="elsewhere" title="Elsewhere"><ElsewhereGallery photos={photos} /></Section>
           ) : process.env.NODE_ENV === "development" && (

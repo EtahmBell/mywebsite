@@ -29,5 +29,13 @@
 .contour-hero{left:calc(50% - 50vw);width:100vw;-webkit-mask-image:linear-gradient(transparent 4%,#000 22%);mask-image:linear-gradient(transparent 4%,#000 22%)}
 .contour-research{right:calc(50% - 50vw);width:260px;-webkit-mask-image:linear-gradient(transparent 8%,#000 20%,#000 85%,transparent);mask-image:linear-gradient(transparent 8%,#000 20%,#000 85%,transparent)}
 .contour-contact{right:calc(50% - 50vw);width:55vw;-webkit-mask-image:linear-gradient(to right,transparent,#000 35%);mask-image:linear-gradient(to right,transparent,#000 35%)}
+/* Topographic islands: fixed-size, mostly beyond the viewport edge, fading out at their outer rings. */
+.contour-hero-isle,.contour-projects,.contour-experience,.contour-awards{-webkit-mask-image:radial-gradient(closest-side,#000 72%,transparent);mask-image:radial-gradient(closest-side,#000 72%,transparent)}
+.contour-hero-isle{top:0;width:400px;height:400px;right:calc(50% - 50vw - 200px)}
+.contour-projects{top:28%;width:520px;height:520px;left:calc(50% - 50vw - 330px)}
+.contour-experience{top:20%;width:480px;height:480px;right:calc(50% - 50vw - 260px)}
+.contour-awards{top:8%;width:360px;height:360px;right:calc(50% - 50vw - 170px)}
 @media(min-width:1100px){.contour-hero,.contour-contact{display:block}}
-@media(min-width:1400px){.contour-research{display:block}}
+@media(min-width:1360px){.contour-hero-isle{display:block}}
+@media(min-width:1400px){.contour-research,.contour-experience,.contour-awards{display:block}}
+@media(min-width:1640px){.contour-projects{display:block}}
