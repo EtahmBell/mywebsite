@@ -3,7 +3,7 @@ import path from "node:path";
 import Contour from "./contours";
 import ElsewhereGallery from "./elsewhere";
 import SiteHeader from "./site-header";
-import { awards, education, elsewhere, experience, interests, projects, research, type Entry, type Link } from "./content";
+import { awards, education, elsewhere, experience, interestAreas, interests, projects, research, type Entry, type Link } from "./content";
 
 function context(entry: Entry) {
   return entry.role ? `${entry.context} · ${entry.role}` : entry.context;
@@ -160,6 +160,17 @@ export default function Home() {
             <figure className="portrait">
               <img src="/ethan-portrait.JPG" alt="Ethan Bell" width="1020" height="1530" fetchPriority="high" />
             </figure>
+          </section>
+          <section className="interests" id="interests" aria-labelledby="interests-title">
+            <h2 className="interests-title" id="interests-title">Interests</h2>
+            <div className="interest-grid">
+              {interestAreas.map(({ title, summary }) => (
+                <div className="interest" key={title}>
+                  <h3>{title}</h3>
+                  <p>{summary}</p>
+                </div>
+              ))}
+            </div>
           </section>
           <Section id="projects" title="Projects">
             <div className="project-grid">

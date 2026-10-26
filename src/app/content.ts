@@ -27,6 +27,13 @@ export const interests = [
   "Co-founder of Stanford Sado",
 ];
 
+// The three-column Interests strip between the hero and Projects.
+export const interestAreas = [
+  { title: "Engineering", summary: "Building thoughtful software and intelligent systems that address real-world problems." },
+  { title: "Healthcare", summary: "Exploring how AI and technology can make healthcare more accessible and personalised." },
+  { title: "Exploration", summary: "Discovering new places, cultures, and perspectives through travel, food, and new experiences." },
+];
+
 export const projects: Entry[] = [
   {
     id: "lamina",
