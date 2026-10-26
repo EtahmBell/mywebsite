@@ -177,7 +177,7 @@ export default function Home() {
             <div className="intro">
               <p className="eyebrow">Health · AI · Software</p>
               <h1 id="intro-title">Ethan Bell.</h1>
-              <p className="hero-lede">Master’s student in Biomedical Data Science at Stanford University.</p>
+              <p className="hero-lede">Master’s student in Biomedical Data Science at&nbsp;Stanford University.</p>
               <p className="proof">Currently contributing to <strong>OpenTSLM</strong>.</p>
               <p className="about-text">I’m interested in building technology at the intersection of artificial intelligence, medicine, and human-centred design. Outside of work, I enjoy surfing, basketball, cooking, and travelling.</p>
               <details className="card-details about-more">

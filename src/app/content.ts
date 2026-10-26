@@ -260,17 +260,17 @@ export const awards: Entry[] = [
 // (alternating places, years and portrait/landscape shapes) and fixed, so it is the same on every load.
 // Reorder by moving lines. Image files live in public/; entries whose file is missing are skipped.
 export const elsewhere: Photo[] = [
-  { src: "/Hawaii-Autumn-2024.JPEG", location: "Hawaii", date: "Autumn 2024", width: 1536, height: 2048, alt: "A person in a red jersey standing at a white fence, looking up at steep green mountains" },
+  { src: "/Malta-Summer-2025.JPEG", location: "Malta", date: "Summer 2025", width: 3168, height: 4752, alt: "A person in a basketball jersey standing on a stone balcony, pointing out over dry hills" },
   { src: "/Kazakhstan-Summer-2024.JPEG", location: "Kazakhstan", date: "Summer 2024", width: 4752, height: 3168, alt: "A person sitting beside a white yurt on a grassy plain" },
-  { src: "/Vincy-Summer-2025.JPEG", location: "Vincy", date: "Summer 2025", width: 3269, height: 4894, alt: "A person standing on a green hilltop beneath a rainbow and storm clouds" },
+  { src: "/Vincy-Summer-2025.JPEG", location: "Saint Vincent and the Grenadines", date: "Summer 2025", width: 3269, height: 4894, alt: "A person standing on a green hilltop beneath a rainbow and storm clouds" },
+  { src: "/ElSalvador-Spring-2025.JPEG", location: "El Salvador", date: "Spring 2025", width: 4894, height: 3269, alt: "Two people walking down a street of colourful houses and parked cars, with green hills beyond" },
+  { src: "/Hawaii-Autumn-2024.JPEG", location: "Hawaii", date: "Autumn 2024", width: 1536, height: 2048, alt: "A person in a red jersey standing at a white fence, looking up at steep green mountains" },
   { src: "/HongKong-Winter-2023.JPG", location: "Hong Kong", date: "Winter 2023", width: 2720, height: 1530, alt: "People at the water’s edge on a beach beside a rocky green headland under an overcast sky" },
   { src: "/Kinosaki-Spring-2024.jpg", location: "Kinosaki", date: "Spring 2024", width: 1020, height: 1530, alt: "A person in a dark kimono-style robe on a stone bridge, framed by willow trees on a misty day" },
   { src: "/Kyrgyzstan-Summer-2026.jpg", location: "Kyrgyzstan", date: "Summer 2026", width: 5184, height: 3456, alt: "A group of hikers on a trail across a green hillside, with yaks grazing below forested slopes" },
   { src: "/DominicanRepublic-Spring-2023.jpg", location: "Dominican Republic", date: "Spring 2023", width: 1020, height: 1530, alt: "Colourful houses and rooftop water tanks seen through a window, with trees in the foreground" },
   { src: "/Cooking-Winter-2025.JPEG", location: "Cooking", date: "Winter 2025", width: 6000, height: 4000, alt: "Hands pouring a yellow filling from a measuring jug into pastry cases on a baking tray" },
   { src: "/Japan-Summer-2024.JPEG", location: "Japan", date: "Summer 2024", width: 3265, height: 4898, alt: "A mountain peak rising above a sea of clouds at dusk" },
-  { src: "/ElSalvador-Spring-2025.JPEG", location: "El Salvador", date: "Spring 2025", width: 4894, height: 3269, alt: "Two people walking down a street of colourful houses and parked cars, with green hills beyond" },
-  { src: "/Malta-Summer-2025.JPEG", location: "Malta", date: "Summer 2025", width: 3168, height: 4752, alt: "A person in a basketball jersey standing on a stone balcony, pointing out over dry hills" },
   { src: "/SouthAfrica-Summer-2023.JPG", location: "South Africa", date: "Summer 2023", width: 2040, height: 1530, alt: "Golden light over rolling hills, with round houses in a valley" },
   { src: "/Korea-Winter-2026.JPEG", location: "Korea", date: "Winter 2026", width: 4284, height: 5712, alt: "Thatched-roof houses in a dry field, with hazy mountains behind" },
 ];

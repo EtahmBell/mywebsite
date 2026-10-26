@@ -249,3 +249,12 @@ h1 .line{text-wrap:wrap}.nowrap{white-space:nowrap}
 .project-row-actions .entry-links{gap:6px 24px;margin:0}
 .project-row-actions .entry-links .text-link{font-size:14px;padding:3px 0}
 @media(prefers-reduced-motion:reduce){.project-row-actions .card-details summary{transition:none}}
+
+/* Hero hierarchy: eyebrow → name → serif subtitle → quiet status line → muted about paragraph → actions.
+   Spacing steps up between groups (subtitle/status are a pair; about and its actions are a pair). */
+.intro .eyebrow{margin-bottom:1.1rem}
+.intro h1{margin-bottom:clamp(1rem,1.6vw,1.4rem)}
+.hero-lede{font-size:clamp(1.3rem,1.75vw,1.55rem);line-height:1.3;letter-spacing:-.005em;max-width:40ch}
+.intro .proof{margin-top:.65rem;font-size:.875rem;letter-spacing:.01em;color:var(--muted)}
+.about-text{font-size:15.5px;line-height:1.7;max-width:58ch;margin:clamp(1.5rem,2.4vw,1.85rem) 0 .9rem;text-wrap:pretty}
+.hero-link{margin-top:1.6rem}
