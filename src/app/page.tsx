@@ -150,8 +150,7 @@ export default function Home() {
               <a className="text-link hero-link" href="#projects">See my work <span aria-hidden="true">↓</span></a>
             </div>
             <figure className="portrait">
-              {/* TODO: set width/height to the real dimensions of ethan-portrait.webp */}
-              <img src="/ethan-portrait.webp" alt="Ethan Bell" width="1200" height="1600" fetchPriority="high" />
+              <img src="/ethan-portrait.JPG" alt="Ethan Bell" width="1020" height="1530" fetchPriority="high" />
             </figure>
           </section>
           <Section id="projects" title="Projects">

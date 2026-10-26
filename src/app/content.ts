@@ -69,6 +69,7 @@ export const projects: Entry[] = [
       { label: "OpenTSLM GitHub", href: "https://github.com/OpenTSLM/OpenTSLM" },
       { label: "My CGM work", href: "https://github.com/EtahmBell/opentslm-cgm" },
     ],
+    image: { src: "/opentslm_website.png", alt: "OpenTSLM website homepage", width: 1922, height: 1178 },
   },
   {
     title: "TCMNet",
