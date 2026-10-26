@@ -1,5 +1,9 @@
+import fs from "node:fs";
+import path from "node:path";
+import Contour from "./contours";
+import ElsewhereGallery from "./elsewhere";
 import SiteHeader from "./site-header";
-import { awards, education, experience, interests, projects, research, type Entry, type Link } from "./content";
+import { awards, education, elsewhere, experience, interests, projects, research, type Entry, type Link } from "./content";
 
 function context(entry: Entry) {
   return entry.role ? `${entry.context} · ${entry.role}` : entry.context;
@@ -129,6 +133,9 @@ function PublicationList({ entries }: { entries: Entry[] }) {
   );
 }
 
+// Only photographs whose file exists in public/ are shown, so a typo never becomes a broken image.
+const photos = elsewhere.filter(({ src }) => src && fs.existsSync(path.join(process.cwd(), "public", src)));
+
 export default function Home() {
   return (
     <>
@@ -137,12 +144,13 @@ export default function Home() {
         <SiteHeader />
         <main id="main">
           <section className="hero" id="about" aria-labelledby="intro-title">
+            <Contour variant="hero" />
             <div className="intro">
-              <p className="eyebrow">Software Engineer</p>
+              <p className="eyebrow">Health · AI · Software</p>
               <h1 id="intro-title">Ethan Bell.</h1>
               <p className="hero-lede">Master’s student in Biomedical Data Science at Stanford University.</p>
-              <p className="proof">Currently contributing to <strong>OpenTSLM</strong>, exploring how language models can understand and reason over physiological time-series data.</p>
-              <p className="about-text">I’m interested in building technology at the intersection of artificial intelligence, medicine, and human-centered design. Outside of work, I enjoy surfing, basketball, cooking, and traveling.</p>
+              <p className="proof">Currently contributing to <strong>OpenTSLM</strong>.</p>
+              <p className="about-text">I’m interested in building technology at the intersection of artificial intelligence, medicine, and human-centred design. Outside of work, I enjoy surfing, basketball, cooking, and travelling.</p>
               <details className="card-details about-more">
                 <summary>A little more about me <span aria-hidden="true">+</span></summary>
                 <Points points={interests} />
@@ -175,9 +183,17 @@ export default function Home() {
               </article>
             </div>
           </Section>
-          <Section id="research" title="Research"><PublicationList entries={research} /></Section>
+          <Section id="research" title="Research"><Contour variant="research" /><PublicationList entries={research} /></Section>
           <Section id="awards" title="Awards"><RowList entries={awards} /></Section>
+          {photos.length > 0 ? (
+            <Section id="elsewhere" title="Elsewhere"><ElsewhereGallery photos={photos} /></Section>
+          ) : process.env.NODE_ENV === "development" && (
+            <aside className="dev-note">
+              Elsewhere is hidden until it has photographs: add images to <code>public/elsewhere/</code> and entries to <code>elsewhere</code> in <code>src/app/content.ts</code>. This note only appears in development.
+            </aside>
+          )}
           <section className="section contact" id="contact" aria-labelledby="contact-title">
+            <Contour variant="contact" />
             <h2 className="section-title" id="contact-title">Contact</h2>
             <div className="contact-links" aria-label="Contact links">
               <a className="text-link" href="mailto:etahm@stanford.edu">etahm@stanford.edu <span aria-hidden="true">↗</span></a>

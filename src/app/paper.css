@@ -1,0 +1,33 @@
+/*
+  Experimental background: shoji-inspired paper (Layer A) and organic contour lines (Layer B).
+  Everything here is scoped to .paper-experimental, which layout.tsx adds to <html> when
+  EXPERIMENTAL_PAPER in experiments.ts is true. Set it to false to get the original background back.
+*/
+
+/* Layer A: fibres and soft tonal variation (/textures/shoji-paper.webp) over the original fine grain,
+   on the unchanged --paper colour. It replaces the grain overlay and sits behind content, so photos stay clean. */
+.paper-experimental{
+  --paper-texture:url("/textures/shoji-paper.webp") 0 0/768px 768px,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E") 0 0/200px 200px;
+  overflow-x:hidden;
+}
+/* Full-bleed layers below extend to the viewport edges; body clips them so the page never scrolls sideways. */
+.paper-experimental body{overflow-x:clip}
+.paper-experimental body::before{z-index:0;opacity:1;background:var(--paper-texture)}
+
+/* The sticky header and section titles carry the same fixed paper, extended to the viewport edges,
+   so content and contour lines slip underneath without a visible band. */
+.paper-experimental .header,.paper-experimental .section-title{background:transparent}
+.paper-experimental .header::before,.paper-experimental .section-title::before{content:"";position:absolute;inset:0 calc(50% - 50vw);z-index:-1;background:var(--paper-texture),var(--paper);background-attachment:fixed}
+.paper-experimental .contact .section-title::before{content:none}
+
+/* Layer B: faint sage-grey linework, only where there is open space, and hidden on narrower screens. */
+.contour{display:none}
+.paper-experimental .hero,.paper-experimental .section{position:relative}
+.contour{position:absolute;top:0;height:100%;z-index:-1;pointer-events:none;overflow:visible}
+.contour path{fill:none;stroke:#6f8478;stroke-opacity:.22;stroke-width:.75;vector-effect:non-scaling-stroke}
+.contour .contour-wash{fill:#7d9184;fill-opacity:.04;stroke:none}
+.contour-hero{left:calc(50% - 50vw);width:100vw;-webkit-mask-image:linear-gradient(transparent 4%,#000 22%);mask-image:linear-gradient(transparent 4%,#000 22%)}
+.contour-research{right:calc(50% - 50vw);width:260px;-webkit-mask-image:linear-gradient(transparent 8%,#000 20%,#000 85%,transparent);mask-image:linear-gradient(transparent 8%,#000 20%,#000 85%,transparent)}
+.contour-contact{right:calc(50% - 50vw);width:55vw;-webkit-mask-image:linear-gradient(to right,transparent,#000 35%);mask-image:linear-gradient(to right,transparent,#000 35%)}
+@media(min-width:1100px){.contour-hero,.contour-contact{display:block}}
+@media(min-width:1400px){.contour-research{display:block}}

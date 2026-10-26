@@ -17,6 +17,9 @@ export type Entry = {
 
 export type Degree = { degree: string; focus?: string; status: string };
 
+// position is optional: a CSS object-position such as "50% 30%" to choose what stays in the 4:5 frame.
+export type Photo = { src: string; location: string; date: string; alt: string; position?: string };
+
 export const interests = [
   "CrossFit competitor",
   "Trained practitioner of Urasenke Japanese tea ceremony",
@@ -30,7 +33,7 @@ export const projects: Entry[] = [
     title: "Lamina",
     context: "1st place · YC × Medplum Hackathon",
     summary:
-      "A physician-agent network for specialty care, where personalized AI agents represent physicians and help coordinate consultations, expertise discovery, and referrals.",
+      "A physician-agent network for specialty care, where personalised AI agents represent physicians and help coordinate consultations, expertise discovery, and referrals.",
     points: [
       "Started as a “LinkedIn for physician AI agents” at the YC × Medplum Hackathon",
       "Built a searchable directory of U.S. physicians from public CMS NPPES data, with a reserved agent identity for each",
@@ -48,7 +51,7 @@ export const projects: Entry[] = [
     title: "Fiyu",
     context: "Machine Learning",
     summary:
-      "A restaurant discovery app for finding locally loved places in Tokyo, combining a custom restaurant-vetting system with personalized daily picks and taste profiles.",
+      "A restaurant discovery app for finding locally loved places in Tokyo, combining a custom restaurant-vetting system with personalised daily picks and taste profiles.",
     tags: ["React", "Supabase", "Python"],
     links: [
       { label: "Website", href: "https://www.fiyuapp.com" },
@@ -122,18 +125,6 @@ export const projects: Entry[] = [
 
 export const experience: Entry[] = [
   {
-    title: "OpenTSLM",
-    role: "Research Contributor",
-    context: "Jul 2026 – Present",
-    summary:
-      "Contributing to OpenTSLM’s research on time-series language models, with a focus on adapting and evaluating models for continuous glucose monitoring data.",
-    links: [
-      { label: "OpenTSLM", href: "https://www.opentslm.com/" },
-      { label: "GitHub", href: "https://github.com/OpenTSLM/OpenTSLM" },
-      { label: "My CGM work", href: "#opentslm-cgm" },
-    ],
-  },
-  {
     title: "Fastino Labs",
     role: "AI Training Data Contractor",
     context: "Oct 2025 – Dec 2025",
@@ -147,7 +138,7 @@ export const experience: Entry[] = [
     summary: "Led consulting work providing strategic and financial guidance to small businesses in California.",
   },
   {
-    title: "Stanford University School of Medicine",
+    title: "Cardinal Free Clinics",
     role: "Patient Health Navigator",
     context: "Jan 2022 – Oct 2024",
     summary:
@@ -251,3 +242,8 @@ export const awards: Entry[] = [
       "Received funding through the Stanford Byers Center for Biodesign for HomeCare Nav, a physician-assistance tool designed to help assess eligibility for Hospital at Home programs.",
   },
 ];
+
+// Elsewhere: put image files in public/elsewhere/ and add one entry per photograph, e.g.
+// { src: "/elsewhere/your-photo.jpg", location: "City, Country", date: "Month Year", alt: "What the photo shows" },
+// Entries whose image file is missing are skipped, and the section stays hidden until at least one is valid.
+export const elsewhere: Photo[] = [];
