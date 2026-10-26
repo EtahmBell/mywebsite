@@ -61,6 +61,18 @@ const shapes = {
   },
   // Experience: a wide, gently stretched peak in the right-hand margin.
   experience: { viewBox: "0 0 480 480", lines: island(240, 240, 220, 8, 3.4, [0.8, 1.15], [-2, 1]), wash: "" },
+  // Experience into Education: tall, loosely nested rings rising from beyond the left edge.
+  "experience-left": {
+    viewBox: "0 0 640 760",
+    lines: [...island(300, 380, 330, 9, 1.9, [0.75, 1.1], [3, -2], 2), ...island(360, 250, 90, 4, 5.6, [0.8, 1.2])],
+    wash: "",
+  },
+  // Education: a broad pooled form in the open space to the right of the degrees.
+  education: {
+    viewBox: "0 0 620 440",
+    lines: [...island(310, 220, 250, 8, 0.9, [1.15, 0.78], [2, 1], 3), ...island(250, 200, 85, 4, 3.3, [1.3, 0.8]), ...island(395, 255, 55, 3, 2.2)],
+    wash: "",
+  },
   // Research: a quiet bundle in the right-hand margin.
   research: {
     viewBox: "0 0 260 800",

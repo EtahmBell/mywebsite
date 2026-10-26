@@ -208,8 +208,9 @@ export default function Home() {
               {projects.filter((entry) => !entry.primary).map((entry) => <ProjectRow entry={entry} key={entry.title} />)}
             </div>
           </Section>
-          <Section id="experience" title="Experience"><Contour variant="experience" /><RowList entries={experience} /></Section>
+          <Section id="experience" title="Experience"><Contour variant="experience" /><Contour variant="experience-left" /><RowList entries={experience} /></Section>
           <Section id="education" title="Education">
+            <Contour variant="education" />
             <div className="rows">
               <article className="row">
                 <div className="row-head"><h3>{education.school}</h3></div>

@@ -37,5 +37,12 @@
 .contour-awards{top:8%;width:360px;height:360px;right:calc(50% - 50vw - 170px)}
 @media(min-width:1100px){.contour-hero,.contour-contact{display:block}}
 @media(min-width:1360px){.contour-hero-isle{display:block}}
+/* Experience and Education: one form from the left edge that crosses into Education, fading towards the text,
+   and a pooled form in Education's empty right-hand side. */
+.contour-experience-left{top:calc(100% - 420px);width:640px;height:760px;left:calc(50% - 50vw - 300px);-webkit-mask-image:linear-gradient(to right,#000 45%,transparent 92%);mask-image:linear-gradient(to right,#000 45%,transparent 92%)}
+.contour-education{top:calc(50% - 220px);width:620px;height:440px;right:calc(50% - 50vw - 140px);-webkit-mask-image:radial-gradient(closest-side,#000 70%,transparent);mask-image:radial-gradient(closest-side,#000 70%,transparent)}
+@media(min-width:1280px){.contour-experience-left{display:block}}
+@media(min-width:1360px){.contour-education{display:block}}
 @media(min-width:1400px){.contour-research,.contour-experience,.contour-awards{display:block}}
 @media(min-width:1640px){.contour-projects{display:block}}
+.contour-education path{stroke-opacity:.17}

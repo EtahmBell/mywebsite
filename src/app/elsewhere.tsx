@@ -28,11 +28,22 @@ export default function ElsewhereGallery({ photos }: { photos: Photo[] }) {
     };
   }, []);
 
+  // Page by whole photographs, landing on photo edges so the scroll snapping never pulls the strip back.
   const scroll = (direction: number) => {
     const el = strip.current;
     if (!el) return;
+    const offsets = [...el.children].map((item) => item.getBoundingClientRect().left - el.getBoundingClientRect().left + el.scrollLeft);
+    const view = el.clientWidth;
+    const current = el.scrollLeft;
+    // Forward: the first photo not yet fully in view becomes the first one shown.
+    // Back: the earliest photo that still fits within one view's width before the current position.
+    const before = offsets.filter((left) => left < current - 1);
+    const target =
+      direction > 0
+        ? offsets.find((left, i) => left > current + 1 && left + el.children[i].clientWidth > current + view + 1) ?? el.scrollWidth
+        : before.find((left) => left >= current - view) ?? before[before.length - 1] ?? 0;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    el.scrollBy({ left: direction * el.clientWidth * 0.8, behavior: reduce ? "auto" : "smooth" });
+    el.scrollTo({ left: Math.max(0, Math.min(target, el.scrollWidth - view)), behavior: reduce ? "auto" : "smooth" });
   };
 
   const focusPhoto = (index: number) => {
