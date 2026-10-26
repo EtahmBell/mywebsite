@@ -61,6 +61,32 @@ function ProjectCard({ entry }: { entry: Entry }) {
   );
 }
 
+// Secondary projects: a small thumbnail beside the title, summary and links, separated by thin rules.
+function ProjectRow({ entry }: { entry: Entry }) {
+  return (
+    <article className="project-row" id={entry.id}>
+      {entry.image && (
+        <figure className="project-thumb">
+          <img src={entry.image.src} alt={entry.image.alt} width={entry.image.width} height={entry.image.height} loading="lazy" />
+        </figure>
+      )}
+      <div className="project-row-body">
+        <p className="card-context">{context(entry)}</p>
+        <h3>{entry.title}</h3>
+        <p className="card-summary">{entry.summary}</p>
+        <Tags tags={entry.tags} />
+        {entry.points && (
+          <details className="card-details">
+            <summary>What I did <span aria-hidden="true">+</span></summary>
+            <Points points={entry.points} />
+          </details>
+        )}
+        <Links links={entry.links} />
+      </div>
+    </article>
+  );
+}
+
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
     <section className="section" id={id} aria-labelledby={`${id}-title`}>
@@ -176,7 +202,10 @@ export default function Home() {
           <Section id="projects" title="Projects">
             <Contour variant="projects" />
             <div className="project-grid">
-              {projects.map((entry) => <ProjectCard entry={entry} key={entry.title} />)}
+              {projects.filter((entry) => entry.primary).map((entry) => <ProjectCard entry={entry} key={entry.title} />)}
+            </div>
+            <div className="project-list">
+              {projects.filter((entry) => !entry.primary).map((entry) => <ProjectRow entry={entry} key={entry.title} />)}
             </div>
           </Section>
           <Section id="experience" title="Experience"><Contour variant="experience" /><RowList entries={experience} /></Section>
@@ -196,8 +225,6 @@ export default function Home() {
               </article>
             </div>
           </Section>
-          <Section id="research" title="Research"><Contour variant="research" /><PublicationList entries={research} /></Section>
-          <Section id="awards" title="Awards"><Contour variant="awards" /><RowList entries={awards} /></Section>
           {photos.length > 0 ? (
             <Section id="elsewhere" title="Elsewhere"><ElsewhereGallery photos={photos} /></Section>
           ) : process.env.NODE_ENV === "development" && (
@@ -205,6 +232,8 @@ export default function Home() {
               Elsewhere is hidden until it has photographs: add images to <code>public/elsewhere/</code> and entries to <code>elsewhere</code> in <code>src/app/content.ts</code>. This note only appears in development.
             </aside>
           )}
+          <Section id="research" title="Research"><Contour variant="research" /><PublicationList entries={research} /></Section>
+          <Section id="awards" title="Awards"><Contour variant="awards" /><RowList entries={awards} /></Section>
           <section className="section contact" id="contact" aria-labelledby="contact-title">
             <Contour variant="contact" />
             <h2 className="section-title" id="contact-title">Contact</h2>
