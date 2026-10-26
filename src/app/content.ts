@@ -24,9 +24,8 @@ export type Photo = { src: string; location: string; date: string; alt: string; 
 
 export const interests = [
   "CrossFit competitor",
-  "Trained practitioner of Urasenke Japanese tea ceremony",
-  "Cellist and former member of a traditional Chinese orchestra",
-  "Co-founder of Stanford Sado",
+  "Trained Urasenke tea ceremony practitioner and co-founder of Stanford Sadō",
+  "Cellist and former member of the Stanford Traditional Chinese Orchestra",
 ];
 
 // The three-column Interests strip between the hero and Projects.
@@ -71,12 +70,17 @@ export const projects: Entry[] = [
     image: { src: "/projects/fiyu.jpg", alt: "Fiyu website", width: 1200, height: 750 },
   },
   {
-    id: "opentslm-cgm",
-    title: "OpenTSLM CGM",
+    id: "opentslm",
+    title: "OpenTSLM",
     context: "Research",
     role: "Contributor",
     summary:
-      "An exploration of how time-series language models can interpret continuous glucose monitoring data, extending OpenTSLM to reason over physiological measurements.",
+      "An open-source research initiative developing time-series language models that can understand and reason over temporal data.",
+    points: [
+      "Adapted and retrained OpenTSLM for continuous glucose monitoring data",
+      "Explored how time-series language models can interpret glucose traces and generate conclusions from physiological measurements",
+      "Evaluated approaches for integrating CGM data into language model workflows",
+    ],
     tags: ["Python"],
     links: [
       { label: "OpenTSLM", href: "https://www.opentslm.com/" },
@@ -159,8 +163,7 @@ export const experience: Entry[] = [
     title: "Tata Consultancy Services",
     // TODO: verify title; newer notes say "AI Engineering Intern"
     role: "AI Engineer Intern",
-    // TODO: add dates
-    context: "Tokyo, Japan",
+    context: "Tokyo, Japan · Jun 2024 – Sep 2024",
     heading: "Kampo prescription model",
     summary:
       "Built a machine learning model that suggests Kampo (traditional Japanese medicine) alternatives to conventional medicine.",
@@ -175,8 +178,7 @@ export const experience: Entry[] = [
     title: "ESO Fund",
     // TODO: verify title; newer notes say "AI Engineering Intern"
     role: "Software Engineer Intern",
-    // TODO: add dates
-    context: "San Mateo, CA",
+    context: "San Mateo, CA · Jun 2025 – Sep 2025",
     heading: "Grant equity calculator",
     summary: "Automated how grant data is pulled from client documents for ESO Fund’s grant equity calculator.",
     points: [
@@ -254,20 +256,21 @@ export const awards: Entry[] = [
   },
 ];
 
-// Elsewhere: one entry per photograph, shown in this order (newest first). Captions come from the filenames.
-// Image files live in public/; entries whose file is missing are skipped, and the section hides if none are valid.
+// Elsewhere: one entry per photograph, shown in this order. The order is hand-mixed rather than chronological
+// (alternating places, years and portrait/landscape shapes) and fixed, so it is the same on every load.
+// Reorder by moving lines. Image files live in public/; entries whose file is missing are skipped.
 export const elsewhere: Photo[] = [
-  { src: "/Kyrgyzstan-Summer-2026.jpg", location: "Kyrgyzstan", date: "Summer 2026", width: 5184, height: 3456, alt: "A group of hikers on a trail across a green hillside, with yaks grazing below forested slopes" },
-  { src: "/Korea-Winter-2026.JPEG", location: "Korea", date: "Winter 2026", width: 4284, height: 5712, alt: "Thatched-roof houses in a dry field, with hazy mountains behind" },
-  { src: "/Vincy-Summer-2025.JPEG", location: "Vincy", date: "Summer 2025", width: 3269, height: 4894, alt: "A person standing on a green hilltop beneath a rainbow and storm clouds" },
-  { src: "/Malta-Summer-2025.JPEG", location: "Malta", date: "Summer 2025", width: 3168, height: 4752, alt: "A person in a basketball jersey standing on a stone balcony, pointing out over dry hills" },
-  { src: "/ElSalvador-Spring-2025.JPEG", location: "El Salvador", date: "Spring 2025", width: 4894, height: 3269, alt: "Two people walking down a street of colourful houses and parked cars, with green hills beyond" },
-  { src: "/Cooking-Winter-2025.JPEG", location: "Cooking", date: "Winter 2025", width: 6000, height: 4000, alt: "Hands pouring a yellow filling from a measuring jug into pastry cases on a baking tray" },
   { src: "/Hawaii-Autumn-2024.JPEG", location: "Hawaii", date: "Autumn 2024", width: 1536, height: 2048, alt: "A person in a red jersey standing at a white fence, looking up at steep green mountains" },
   { src: "/Kazakhstan-Summer-2024.JPEG", location: "Kazakhstan", date: "Summer 2024", width: 4752, height: 3168, alt: "A person sitting beside a white yurt on a grassy plain" },
-  { src: "/Japan-Summer-2024.JPEG", location: "Japan", date: "Summer 2024", width: 3265, height: 4898, alt: "A mountain peak rising above a sea of clouds at dusk" },
-  { src: "/Kinosaki-Spring-2024.jpg", location: "Kinosaki", date: "Spring 2024", width: 1020, height: 1530, alt: "A person in a dark kimono-style robe on a stone bridge, framed by willow trees on a misty day" },
+  { src: "/Vincy-Summer-2025.JPEG", location: "Vincy", date: "Summer 2025", width: 3269, height: 4894, alt: "A person standing on a green hilltop beneath a rainbow and storm clouds" },
   { src: "/HongKong-Winter-2023.JPG", location: "Hong Kong", date: "Winter 2023", width: 2720, height: 1530, alt: "People at the water’s edge on a beach beside a rocky green headland under an overcast sky" },
-  { src: "/SouthAfrica-Summer-2023.JPG", location: "South Africa", date: "Summer 2023", width: 2040, height: 1530, alt: "Golden light over rolling hills, with round houses in a valley" },
+  { src: "/Kinosaki-Spring-2024.jpg", location: "Kinosaki", date: "Spring 2024", width: 1020, height: 1530, alt: "A person in a dark kimono-style robe on a stone bridge, framed by willow trees on a misty day" },
+  { src: "/Kyrgyzstan-Summer-2026.jpg", location: "Kyrgyzstan", date: "Summer 2026", width: 5184, height: 3456, alt: "A group of hikers on a trail across a green hillside, with yaks grazing below forested slopes" },
   { src: "/DominicanRepublic-Spring-2023.jpg", location: "Dominican Republic", date: "Spring 2023", width: 1020, height: 1530, alt: "Colourful houses and rooftop water tanks seen through a window, with trees in the foreground" },
+  { src: "/Cooking-Winter-2025.JPEG", location: "Cooking", date: "Winter 2025", width: 6000, height: 4000, alt: "Hands pouring a yellow filling from a measuring jug into pastry cases on a baking tray" },
+  { src: "/Japan-Summer-2024.JPEG", location: "Japan", date: "Summer 2024", width: 3265, height: 4898, alt: "A mountain peak rising above a sea of clouds at dusk" },
+  { src: "/ElSalvador-Spring-2025.JPEG", location: "El Salvador", date: "Spring 2025", width: 4894, height: 3269, alt: "Two people walking down a street of colourful houses and parked cars, with green hills beyond" },
+  { src: "/Malta-Summer-2025.JPEG", location: "Malta", date: "Summer 2025", width: 3168, height: 4752, alt: "A person in a basketball jersey standing on a stone balcony, pointing out over dry hills" },
+  { src: "/SouthAfrica-Summer-2023.JPG", location: "South Africa", date: "Summer 2023", width: 2040, height: 1530, alt: "Golden light over rolling hills, with round houses in a valley" },
+  { src: "/Korea-Winter-2026.JPEG", location: "Korea", date: "Winter 2026", width: 4284, height: 5712, alt: "Thatched-roof houses in a dry field, with hazy mountains behind" },
 ];
