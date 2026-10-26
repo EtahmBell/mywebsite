@@ -75,13 +75,15 @@ function ProjectRow({ entry }: { entry: Entry }) {
         <h3>{entry.title}</h3>
         <p className="card-summary">{entry.summary}</p>
         <Tags tags={entry.tags} />
-        {entry.points && (
-          <details className="card-details">
-            <summary>What I did <span aria-hidden="true">+</span></summary>
-            <Points points={entry.points} />
-          </details>
-        )}
-        <Links links={entry.links} />
+        <div className="project-row-actions">
+          {entry.points && (
+            <details className="card-details">
+              <summary>What I did <span aria-hidden="true">+</span></summary>
+              <Points points={entry.points} />
+            </details>
+          )}
+          <Links links={entry.links} />
+        </div>
       </div>
     </article>
   );
