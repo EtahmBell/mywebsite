@@ -44,7 +44,13 @@ function island(cx: number, cy: number, radius: number, rings: number, seed: num
   });
 }
 
-const shapes = {
+// A topographic form whose chosen ring is also filled as a faint pooled wash, like the shaded paper in the reference.
+// Pass null for no wash, where a fill would cross a sticky section title (whose paper background would cut it off).
+function pooled(lines: string[], ring: number | null) {
+  return { lines, wash: ring === null ? "" : lines[ring], pool: true };
+}
+
+const shapes: Record<string, { viewBox: string; lines: string[]; wash: string; pool?: boolean }> = {
   // Hero: falls through the space between the introduction and the portrait, then drifts off the left edge.
   hero: {
     viewBox: "0 0 1440 800",
@@ -52,35 +58,23 @@ const shapes = {
     wash: "M-40 800 L-40 742 C120 724 300 700 450 676 C590 650 650 560 700 470 C720 520 690 640 600 720 C500 800 300 800 -40 800 Z",
   },
   // Hero, top right: a single small peak beyond the portrait.
-  "hero-isle": { viewBox: "0 0 400 400", lines: island(200, 200, 170, 6, 0.6, [1.15, 0.85], [2, -1]), wash: "" },
+  "hero-isle": { viewBox: "0 0 400 400", ...pooled(island(200, 200, 170, 6, 0.6, [1.15, 0.85], [2, -1]), 2) },
   // Projects: a pooled cluster, two peaks inside shared outer rings, mostly beyond the left edge.
-  projects: {
-    viewBox: "0 0 520 520",
-    lines: [...island(260, 260, 240, 7, 2.1, [0.9, 1.1], [1, 2], 4), ...island(215, 205, 95, 4, 4.2, [1.2, 0.8]), ...island(320, 335, 70, 3, 1.3)],
-    wash: "",
-  },
+  projects: { viewBox: "0 0 520 520", ...pooled([...island(260, 260, 240, 7, 2.1, [0.9, 1.1], [1, 2], 4), ...island(215, 205, 95, 4, 4.2, [1.2, 0.8]), ...island(320, 335, 70, 3, 1.3)], 1) },
   // Experience: a wide, gently stretched peak in the right-hand margin.
-  experience: { viewBox: "0 0 480 480", lines: island(240, 240, 220, 8, 3.4, [0.8, 1.15], [-2, 1]), wash: "" },
+  experience: { viewBox: "0 0 480 480", ...pooled(island(240, 240, 220, 8, 3.4, [0.8, 1.15], [-2, 1]), 4) },
   // Experience into Education: tall, loosely nested rings rising from beyond the left edge.
-  "experience-left": {
-    viewBox: "0 0 640 760",
-    lines: [...island(300, 380, 330, 9, 1.9, [0.75, 1.1], [3, -2], 2), ...island(360, 250, 90, 4, 5.6, [0.8, 1.2])],
-    wash: "",
-  },
+  "experience-left": { viewBox: "0 0 640 760", ...pooled([...island(300, 380, 330, 9, 1.9, [0.75, 1.1], [3, -2], 2), ...island(360, 250, 90, 4, 5.6, [0.8, 1.2])], null) },
   // Education: a broad pooled form in the open space to the right of the degrees.
-  education: {
-    viewBox: "0 0 620 440",
-    lines: [...island(310, 220, 250, 8, 0.9, [1.15, 0.78], [2, 1], 3), ...island(250, 200, 85, 4, 3.3, [1.3, 0.8]), ...island(395, 255, 55, 3, 2.2)],
-    wash: "",
-  },
+  education: { viewBox: "0 0 620 440", ...pooled([...island(310, 220, 250, 8, 0.9, [1.15, 0.78], [2, 1], 3), ...island(250, 200, 85, 4, 3.3, [1.3, 0.8]), ...island(395, 255, 55, 3, 2.2)], 1) },
   // Research: a quiet bundle in the right-hand margin.
   research: {
     viewBox: "0 0 260 800",
     lines: bundle([[300, 90], [230, 210], [160, 360], [150, 500], [205, 640], [300, 760]], 4, [-12, 3], 2),
-    wash: "",
+    wash: "M300 120 C250 220 200 340 190 470 C185 600 240 700 300 770 Z",
   },
   // Awards: a small pooled form at the right edge.
-  awards: { viewBox: "0 0 360 360", lines: [...island(180, 180, 160, 5, 5.1, [1.1, 0.9], [0, 0], 3), ...island(150, 165, 60, 3, 0.4)], wash: "" },
+  awards: { viewBox: "0 0 360 360", ...pooled([...island(180, 180, 160, 5, 5.1, [1.1, 0.9], [0, 0], 3), ...island(150, 165, 60, 3, 0.4)], 0) },
   // Contact: a low sweep from the right edge into the open space beside the links.
   contact: {
     viewBox: "0 0 800 220",
@@ -91,12 +85,22 @@ const shapes = {
 
 export default function Contour({ variant }: { variant: keyof typeof shapes }) {
   if (!EXPERIMENTAL_PAPER) return null;
-  const { viewBox, lines, wash } = shapes[variant];
+  const { viewBox, lines, wash, pool } = shapes[variant];
   // Flowing bands stretch with their section; topographic islands keep their proportions.
   const stretch = variant === "hero" || variant === "research" || variant === "contact";
+  const blur = `contour-soft-${variant}`;
   return (
-    <svg className={`contour contour-${variant}`} viewBox={viewBox} preserveAspectRatio={stretch ? "none" : "xMidYMid meet"} aria-hidden="true" focusable="false">
-      {wash && <path className="contour-wash" d={wash} />}
+    <svg className={`contour contour-${variant}${pool ? " contour-isle" : ""}`} viewBox={viewBox} preserveAspectRatio={stretch ? "none" : "xMidYMid meet"} aria-hidden="true" focusable="false">
+      {wash && (
+        <>
+          <defs>
+            <filter id={blur} x="-10%" y="-10%" width="120%" height="120%">
+              <feGaussianBlur stdDeviation="3" />
+            </filter>
+          </defs>
+          <path className="contour-wash" d={wash} filter={`url(#${blur})`} />
+        </>
+      )}
       {lines.map((d) => <path key={d} d={d} />)}
     </svg>
   );
