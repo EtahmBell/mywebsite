@@ -25,7 +25,7 @@ export type Photo = { src: string; location: string; date: string; alt: string; 
 export const interests = [
   "CrossFit competitor",
   "Trained Urasenke tea ceremony practitioner and co-founder of Stanford Sadō",
-  "Cellist and former member of the Stanford Traditional Chinese Orchestra",
+  "Cellist and former member of the Stanford Chinese Music Ensemble",
 ];
 
 // The three-column Interests strip between the hero and Projects.
